@@ -1,0 +1,36 @@
+Sub Stock_Ticker()
+
+    Dim Stock_Name As String
+    
+    Dim Stock_Total As Double
+
+    Stock_Total = 0
+    
+    Dim Stock_Table_Row As Integer
+    Stock_Table_Row = 2
+    
+    For i = 2 To 760192
+    
+        If Cells(i + 1, 1).Value <> Cells(i, 1).Value Then
+        
+        Stock_Name = Cells(i, 1).Value
+        
+        Stock_Total = Stock_Total + Cells(i, 7).Value
+        
+        Range("I" & Stock_Table_Row).Value = Stock_Name
+        
+        Range("J" & Stock_Table_Row).Value = Stock_Total
+        
+        Stock_Table_Row = Stock_Table_Row + 1
+        
+        Stock_Total = 0
+        
+    Else
+        
+        Stock_Total = Stock_Total + Cells(i, 7).Value
+        
+        End If
+        
+    Next i
+
+End Sub
